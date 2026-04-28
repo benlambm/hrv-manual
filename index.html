@@ -7,9 +7,9 @@
 <meta name="description" content="A practical, evidence-backed quick-reference for raising heart rate variability through vagal tone, breathwork, sleep, cold, and movement protocols. Includes interactive breath pacer and personalized starter protocol." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%232E5D43'/><path d='M5 16 L11 16 L13 11 L15 21 L17 9 L19 18 L21 16 L27 16' stroke='%23F4EFE6' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000000'/><path d='M3 16 L10 16 L12 9 L15 23 L18 7 L21 21 L23 16 L29 16' stroke='%23D90429' stroke-width='2.5' fill='none' stroke-linecap='square' stroke-linejoin='miter'/></svg>" />
 </head>
 <body>
 
@@ -24,6 +24,7 @@
   <nav>
     <a href="#assess">Assess</a>
     <a href="#pacer">Pacer</a>
+    <a href="#track">Track</a>
     <a href="#protocols">Protocols</a>
     <a href="#weekly">Weekly</a>
     <a href="#avoid">Avoid</a>
@@ -77,6 +78,14 @@
   </div>
 
   <div class="assess-wrap">
+    <div class="assess-banner" id="lastAssessmentBanner" hidden>
+      <p id="lastAssessmentText">Last assessment: —</p>
+      <div class="assessment-banner-actions">
+        <button class="btn-primary btn-sm" id="viewLastAssessmentBtn" type="button">See results</button>
+        <button class="btn-ghost btn-sm" id="retakeAssessmentBannerBtn" type="button">Retake</button>
+      </div>
+    </div>
+
     <div class="assess-card" id="assessCard">
       <!-- Progress -->
       <div class="assess-progress" aria-hidden="true">
@@ -169,6 +178,75 @@
       </div>
 
       <p class="pacer-tip">Tip: nose-in, mouth-or-nose-out. The extended exhale is the active ingredient. Don't strain — if the count feels long, switch to 5 / 5 first and work up over a week.</p>
+    </div>
+  </div>
+
+  <div class="breath-log" id="breathLog" aria-live="polite">
+    <h3 id="breathLogTitle">Practice log</h3>
+    <div class="pacer-meta breath-summary">
+      <div><span class="kk">Total practice</span><span class="vv" id="breathTotalMinutes">0 min</span></div>
+      <div><span class="kk">Current streak</span><span class="vv" id="breathCurrentStreak">0 days</span></div>
+      <div><span class="kk">Sessions saved</span><span class="vv" id="breathSessionTotal">0</span></div>
+    </div>
+    <div class="breath-log-grid">
+      <section class="breath-log-card" aria-labelledby="breathDailyTitle">
+        <h4 id="breathDailyTitle">Last 14 days</h4>
+        <ul id="breathDailyList" class="breath-daily-list"></ul>
+      </section>
+      <section class="breath-log-card" aria-labelledby="breathRecentTitle">
+        <h4 id="breathRecentTitle">Recent sessions</h4>
+        <ul id="breathRecentList" class="breath-recent-list"></ul>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TRACK ============== -->
+<section class="section" id="track">
+  <div class="section-head center">
+    <span class="step">Track</span>
+    <h2>Track your HRV manually</h2>
+    <p class="sub">Log a daily reading, add context, and watch the 30-day trend against your own baseline band. Entries stay in this browser.</p>
+  </div>
+
+  <div class="track-wrap">
+    <form class="track-form" id="trackForm">
+      <label class="track-field">
+        <span>Date</span>
+        <input id="hrvDate" name="date" type="date" required />
+      </label>
+      <label class="track-field">
+        <span>HRV value (ms)</span>
+        <input id="hrvValue" name="hrv" type="number" min="1" step="1" inputmode="numeric" required />
+      </label>
+      <label class="track-field track-note">
+        <span>Note (optional)</span>
+        <input id="hrvNote" name="note" type="text" maxlength="180" placeholder="Sleep, alcohol, training, travel…" />
+      </label>
+      <div class="track-actions">
+        <button class="btn-primary" type="submit">Save reading</button>
+        <button class="btn-ghost" id="hrvExportBtn" type="button">Export CSV</button>
+        <button class="btn-ghost" id="hrvImportBtn" type="button">Import CSV</button>
+        <input id="hrvImportFile" type="file" accept=".csv,text/csv" hidden />
+      </div>
+    </form>
+
+    <div class="track-chart" id="hrvChart" role="img" aria-label="Last 30 days HRV readings"></div>
+
+    <div class="pacer-meta track-stats">
+      <div><span class="kk">7-day avg</span><span class="vv" id="hrvAvg7">—</span></div>
+      <div><span class="kk">30-day avg</span><span class="vv" id="hrvAvg30">—</span></div>
+      <div><span class="kk">Trend</span><span class="vv" id="hrvTrend">—</span></div>
+    </div>
+
+    <div class="track-recent">
+      <h3>Recent readings</h3>
+      <table class="track-table">
+        <thead>
+          <tr><th>Date</th><th>HRV</th><th>Note</th><th>Action</th></tr>
+        </thead>
+        <tbody id="readingsTable"></tbody>
+      </table>
     </div>
   </div>
 </section>
