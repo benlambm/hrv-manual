@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HRV Recovery Manual — A Quick Reference for Nervous System Resilience</title>
+<meta name="description" content="A practical, evidence-backed quick-reference for raising heart rate variability through vagal tone, breathwork, sleep, cold, and movement protocols. Includes interactive breath pacer and personalized starter protocol." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%232E5D43'/><path d='M5 16 L11 16 L13 11 L15 21 L17 9 L19 18 L21 16 L27 16' stroke='%23F4EFE6' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="topnav">
+  <a href="#top" class="logo" aria-label="HRV Manual home">
+    <svg viewBox="0 0 40 32" width="34" height="28" fill="none" aria-hidden="true">
+      <path d="M2 16 L10 16 L13 8 L16 24 L19 6 L22 22 L25 16 L38 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>HRV Manual</span>
+  </a>
+  <nav>
+    <a href="#assess">Assess</a>
+    <a href="#pacer">Pacer</a>
+    <a href="#protocols">Protocols</a>
+    <a href="#weekly">Weekly</a>
+    <a href="#avoid">Avoid</a>
+  </nav>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <p class="eyebrow">Quick reference · Stress &amp; burnout recovery</p>
+    <h1>Raising HRV is mostly<br/><em>teaching the vagus nerve to talk again.</em></h1>
+    <p class="lede">Heart rate variability is the most accessible proxy for vagal tone. When the parasympathetic system is suppressed by chronic stress, HRV flattens. These protocols re-train the brake pedal of your nervous system. Most produce measurable change in 2–4 weeks.</p>
+    <div class="hero-meta">
+      <div><span class="num">5</span><span class="lbl">min/day minimum effective dose</span></div>
+      <div><span class="num">6</span><span class="lbl">breaths per minute target rate</span></div>
+      <div><span class="num">10–30%</span><span class="lbl">typical HRV gain in 4–12 weeks</span></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#assess" class="btn-primary">Get my starter protocol →</a>
+      <a href="#pacer" class="btn-ghost">Try the 6-bpm pacer</a>
+    </div>
+  </div>
+  <div class="hero-viz" aria-hidden="true">
+    <svg viewBox="0 0 600 300" width="100%" height="100%">
+      <defs>
+        <linearGradient id="grad1" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#2E5D43" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#2E5D43" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,150 Q50,80 100,150 T200,150 T300,150 T400,150 T500,150 T600,150" stroke="#2E5D43" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M0,150 Q50,80 100,150 T200,150 T300,150 T400,150 T500,150 T600,150 L600,300 L0,300 Z" fill="url(#grad1)"/>
+      <circle cx="50" cy="80" r="4" fill="#2E5D43"/>
+      <circle cx="150" cy="220" r="4" fill="#C46A3F"/>
+      <circle cx="250" cy="80" r="4" fill="#2E5D43"/>
+      <circle cx="350" cy="220" r="4" fill="#C46A3F"/>
+      <circle cx="450" cy="80" r="4" fill="#2E5D43"/>
+      <circle cx="550" cy="220" r="4" fill="#C46A3F"/>
+      <text x="50" y="65" text-anchor="middle" font-family="Inter" font-size="11" fill="#2E5D43">inhale 4s</text>
+      <text x="150" y="245" text-anchor="middle" font-family="Inter" font-size="11" fill="#C46A3F">exhale 6s</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============== ASSESSMENT ============== -->
+<section class="section section-alt" id="assess">
+  <div class="section-head center">
+    <span class="step">01 · Personalize</span>
+    <h2>Five questions → your starter protocol</h2>
+    <p class="sub">No data leaves your browser. Answers are scored against the protocol leverage map and produce a 2-week starting plan.</p>
+  </div>
+
+  <div class="assess-wrap">
+    <div class="assess-card" id="assessCard">
+      <!-- Progress -->
+      <div class="assess-progress" aria-hidden="true">
+        <div class="bar"><span id="progBar"></span></div>
+        <div class="counter"><span id="progNum">1</span> <span class="of">/ 5</span></div>
+      </div>
+
+      <!-- Questions injected by JS -->
+      <div class="assess-stage" id="stage" role="region" aria-live="polite"></div>
+
+      <!-- Nav -->
+      <div class="assess-nav">
+        <button id="backBtn" class="btn-ghost btn-sm" disabled>← Back</button>
+        <button id="nextBtn" class="btn-primary btn-sm" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- Result panel -->
+    <div class="assess-result" id="resultPanel" hidden>
+      <div class="result-head">
+        <p class="eyebrow">Your starter protocol</p>
+        <h3 id="resultTitle">— </h3>
+        <p id="resultSub" class="result-sub"></p>
+      </div>
+      <div class="result-grid" id="resultGrid"></div>
+      <div class="result-cta">
+        <a href="#pacer" class="btn-primary">Start with the pacer →</a>
+        <button class="btn-ghost" id="restartBtn">Retake</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PACER ============== -->
+<section class="section" id="pacer">
+  <div class="section-head center">
+    <span class="step">02 · Practice</span>
+    <h2>The 6-breath-per-minute pacer</h2>
+    <p class="sub">Inhale as the circle expands, exhale as it contracts. Default is 4s in / 6s out — the resonance frequency for most adults. Five minutes is the minimum effective dose.</p>
+  </div>
+
+  <div class="pacer-wrap">
+    <div class="pacer-stage">
+      <div class="pacer-circle" id="pacerCircle">
+        <div class="pacer-ring"></div>
+        <div class="pacer-inner">
+          <div class="pacer-phase" id="pacerPhase">Ready</div>
+          <div class="pacer-count" id="pacerCount">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pacer-controls">
+      <div class="pacer-meta">
+        <div><span class="kk">Session</span><span class="vv" id="sessionTime">0:00</span></div>
+        <div><span class="kk">Breaths</span><span class="vv" id="breathCount">0</span></div>
+        <div><span class="kk">Pattern</span><span class="vv" id="patternLabel">4 / 6</span></div>
+      </div>
+
+      <div class="pacer-btns">
+        <button class="btn-primary" id="startBtn">Start</button>
+        <button class="btn-ghost" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="pacer-options">
+        <label class="opt">
+          <span>Pattern</span>
+          <select id="patternSelect">
+            <option value="4-6" selected>4 in / 6 out — resonance (recommended)</option>
+            <option value="4-7">4 in / 7 out — deeper exhale</option>
+            <option value="5-5">5 in / 5 out — coherent breathing</option>
+            <option value="4-4-4-4">4 / 4 / 4 / 4 — box breathing</option>
+            <option value="6-6">6 in / 6 out — slow coherent</option>
+          </select>
+        </label>
+        <label class="opt">
+          <span>Duration</span>
+          <select id="durationSelect">
+            <option value="300" selected>5 min — minimum dose</option>
+            <option value="600">10 min</option>
+            <option value="1200">20 min — diminishing returns above</option>
+            <option value="0">Open ended</option>
+          </select>
+        </label>
+        <label class="opt opt-toggle">
+          <span>Audio cue</span>
+          <input type="checkbox" id="audioToggle" />
+          <span class="toggle-vis"></span>
+        </label>
+      </div>
+
+      <p class="pacer-tip">Tip: nose-in, mouth-or-nose-out. The extended exhale is the active ingredient. Don't strain — if the count feels long, switch to 5 / 5 first and work up over a week.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FUNDAMENTALS ============== -->
+<section class="section section-alt" id="fundamentals">
+  <div class="section-head">
+    <span class="step">03 · Mechanism</span>
+    <h2>Why 6 breaths per minute is not arbitrary</h2>
+  </div>
+  <div class="two-col">
+    <div>
+      <p class="prose">When you exhale slowly, the vagus nerve actively brakes your heart. At roughly 6 breaths per minute — your <strong>resonance frequency</strong> — the natural oscillations of heart rate, blood pressure, and respiration align into a single amplified wave. This trains the baroreflex, which over weeks raises baseline vagal tone. Higher vagal tone means lower resting heart rate, lower inflammation, better sleep, and the ability to downshift when the threat has passed. Every protocol below either stimulates this directly (breathwork, cold) or removes what suppresses it (sleep, alcohol, overtraining).</p>
+    </div>
+    <aside class="sidecard">
+      <h4>The two levers</h4>
+      <ul class="lever-list">
+        <li><span class="dot dot-green"></span><strong>Stimulate</strong> — breathwork, cold, zone 2, sauna, biofeedback</li>
+        <li><span class="dot dot-red"></span><strong>Remove suppressors</strong> — alcohol, late meals, blue light, overtraining, fragmented sleep</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- ============== PROTOCOLS ============== -->
+<section class="section" id="protocols">
+  <div class="section-head">
+    <span class="step">04 · Protocols</span>
+    <h2>The seven protocols, ranked by leverage</h2>
+    <p class="sub">Stress/burnout context. Top three deliver most of the recovery; the rest are accelerants.</p>
+  </div>
+
+  <div class="protocols">
+
+    <article class="protocol p-hero">
+      <header>
+        <span class="rank">01</span>
+        <span class="tier tier-1">Highest leverage</span>
+      </header>
+      <h3>Resonance breathing — 4 in, 6 out</h3>
+      <p class="hook">The single most evidence-backed intervention. Direct vagal activation, immediate effect, compounds for 4–8 weeks.</p>
+      <div class="protocol-grid">
+        <div><span class="kk">Dose</span><span class="vv">5–20 min/day</span></div>
+        <div><span class="kk">Rate</span><span class="vv">~6 breaths/min</span></div>
+        <div><span class="kk">Pattern</span><span class="vv">Inhale 4s, exhale 6s</span></div>
+        <div><span class="kk">Felt by</span><span class="vv">Session 1</span></div>
+        <div><span class="kk">Baseline shift</span><span class="vv">Week 4</span></div>
+        <div><span class="kk">Best timing</span><span class="vv">Morning + pre-sleep</span></div>
+      </div>
+      <p class="why">The extended exhale is the active ingredient — it lengthens the phase when the vagus is firing. At 4:6 you're in parasympathetic dominance 60% of every cycle.</p>
+    </article>
+
+    <article class="protocol">
+      <header><span class="rank">02</span><span class="tier tier-1">Highest leverage</span></header>
+      <h3>Sleep architecture, not just duration</h3>
+      <div class="protocol-grid two">
+        <div><span class="kk">Window</span><span class="vv">7–9 hrs, same time daily</span></div>
+        <div><span class="kk">Bedroom temp</span><span class="vv">15–19°C / 59–66°F</span></div>
+        <div><span class="kk">Last meal</span><span class="vv">≥3 hrs before bed</span></div>
+        <div><span class="kk">Magnesium</span><span class="vv">200–400 mg glycinate</span></div>
+      </div>
+      <p class="why">Morning HRV is taken during the deep-sleep parasympathetic window. Anything fragmenting that window — alcohol, late food, heat, light — directly suppresses your reading.</p>
+    </article>
+
+    <article class="protocol">
+      <header><span class="rank">03</span><span class="tier tier-1">Highest leverage</span></header>
+      <h3>Cut evening alcohol</h3>
+      <div class="protocol-grid two">
+        <div><span class="kk">Effect size</span><span class="vv">Often the largest single suppressor</span></div>
+        <div><span class="kk">Mechanism</span><span class="vv">Sympathetic spike during sleep</span></div>
+        <div><span class="kk">Test</span><span class="vv">2 dry weeks, watch baseline</span></div>
+        <div><span class="kk">Threshold</span><span class="vv">Even 1–2 drinks measurable</span></div>
+      </div>
+      <p class="why">If your daily HRV is volatile and you drink at night, this is almost certainly the variable. The dose-response is brutal and individual.</p>
+    </article>
+
+    <article class="protocol">
+      <header><span class="rank">04</span><span class="tier tier-2">Strong accelerant</span></header>
+      <h3>Zone 2 cardio, 3–4×/week</h3>
+      <div class="protocol-grid two">
+        <div><span class="kk">Dose</span><span class="vv">30–45 min, conversational pace</span></div>
+        <div><span class="kk">Heart rate</span><span class="vv">60–70% of max</span></div>
+        <div><span class="kk">Modes</span><span class="vv">Brisk walk, cycling, swim</span></div>
+        <div><span class="kk">Avoid</span><span class="vv">Daily high-intensity in burnout</span></div>
+      </div>
+      <p class="why">Builds parasympathetic capacity without hammering recovery. In burnout states, hard intervals often <em>lower</em> HRV for days; zone 2 raises it.</p>
+    </article>
+
+    <article class="protocol">
+      <header><span class="rank">05</span><span class="tier tier-2">Strong accelerant</span></header>
+      <h3>Brief cold exposure</h3>
+      <div class="protocol-grid two">
+        <div><span class="kk">Start</span><span class="vv">30–60s cold shower finish</span></div>
+        <div><span class="kk">Progress to</span><span class="vv">2–3 min at 10–15°C</span></div>
+        <div><span class="kk">Frequency</span><span class="vv">2–3× per week</span></div>
+        <div><span class="kk">Mechanism</span><span class="vv">Diving reflex → vagal rebound</span></div>
+      </div>
+      <p class="why">Acute sympathetic spike followed by a 20–60% parasympathetic rebound in the hours after. Skip if it leaves you wired or depleted — not everyone responds.</p>
+    </article>
+
+    <article class="protocol">
+      <header><span class="rank">06</span><span class="tier tier-3">Optional</span></header>
+      <h3>Sauna with cool-down</h3>
+      <div class="protocol-grid two">
+        <div><span class="kk">Dose</span><span class="vv">15–20 min at 70–90°C</span></div>
+        <div><span class="kk">Frequency</span><span class="vv">2–4× per week</span></div>
+        <div><span class="kk">Pair with</span><span class="vv">Cool shower after</span></div>
+        <div><span class="kk">Bonus</span><span class="vv">All-cause mortality benefit</span></div>
+      </div>
+      <p class="why">Hormetic stress similar to exercise. The post-sauna cool-down amplifies parasympathetic rebound the same way cold does, with a gentler entry.</p>
+    </article>
+
+    <article class="protocol">
+      <header><span class="rank">07</span><span class="tier tier-3">Optional</span></header>
+      <h3>HRV biofeedback (optional kit)</h3>
+      <div class="protocol-grid two">
+        <div><span class="kk">Tools</span><span class="vv">Elite HRV, HRV4Training, Oura/Whoop</span></div>
+        <div><span class="kk">Use</span><span class="vv">Find your personal resonance rate</span></div>
+        <div><span class="kk">Worth it if</span><span class="vv">You're a data person</span></div>
+        <div><span class="kk">Skippable if</span><span class="vv">You'll do the practice anyway</span></div>
+      </div>
+      <p class="why">Tightens the feedback loop. Useful for finding your exact resonance frequency (likely between 4.5–6.5 bpm), but the benefits come from the breathing — not the device.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============== TIMELINE ============== -->
+<section class="section section-alt" id="timeline">
+  <div class="section-head">
+    <span class="step">05 · Trajectory</span>
+    <h2>What to expect, week by week</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-marker">Day 1</div><p>Single 5-min breathwork session produces measurable HRV bump within minutes. Don't expect the bump to persist yet.</p></div>
+    <div class="tl-item"><div class="tl-marker">Week 1</div><p>Subjective shift first: easier sleep onset, less reactive to stressors, longer fuse. Baseline HRV usually still noisy.</p></div>
+    <div class="tl-item"><div class="tl-marker">Week 2–4</div><p>Morning HRV trend starts climbing 5–15% if practice is consistent and alcohol is cut. Daily volatility narrows.</p></div>
+    <div class="tl-item"><div class="tl-marker">Week 4–8</div><p>Baseline shift visible on a 30-day chart. RHR drops 2–5 bpm. Inflammation markers (CRP, IL-6) often improve.</p></div>
+    <div class="tl-item"><div class="tl-marker">Week 8–12</div><p>10–30% HRV gain typical for consistent practitioners. New baseline holds as long as practice + sleep hygiene continue.</p></div>
+  </div>
+</section>
+
+<!-- ============== WEEKLY PLAN ============== -->
+<section class="section" id="weekly">
+  <div class="section-head">
+    <span class="step">06 · Routine</span>
+    <h2>A minimum-viable week</h2>
+    <p class="sub">If you do nothing else, do this. Built for someone in stress recovery, not training for a marathon.</p>
+  </div>
+  <div class="week-grid">
+    <div class="day"><h5>Mon</h5><p class="t1">Breathwork 5 min AM</p><p class="t2">Zone 2 walk 30 min</p><p class="t3">Lights down 9pm</p></div>
+    <div class="day"><h5>Tue</h5><p class="t1">Breathwork 5 min AM</p><p class="t2">Cold shower finish 60s</p><p class="t3">No alcohol</p></div>
+    <div class="day"><h5>Wed</h5><p class="t1">Breathwork 5 min AM</p><p class="t2">Zone 2 cycle 40 min</p><p class="t3">Sauna 15 min PM</p></div>
+    <div class="day"><h5>Thu</h5><p class="t1">Breathwork 10 min AM</p><p class="t2">Walk + sunlight 20 min</p><p class="t3">Bed by 10:30</p></div>
+    <div class="day"><h5>Fri</h5><p class="t1">Breathwork 5 min AM</p><p class="t2">Zone 2 walk 30 min</p><p class="t3">Cold shower finish</p></div>
+    <div class="day"><h5>Sat</h5><p class="t1">Longer session 15 min</p><p class="t2">Outdoor activity 60+ min</p><p class="t3">Sauna or social</p></div>
+    <div class="day"><h5>Sun</h5><p class="t1">Breathwork 10 min PM</p><p class="t2">Slow rest day</p><p class="t3">Plan the next week</p></div>
+  </div>
+  <p class="footnote">Total active commitment: ~45 min/day. The breathwork is non-negotiable; the rest is rotation.</p>
+</section>
+
+<!-- ============== AVOID ============== -->
+<section class="section section-alt" id="avoid">
+  <div class="section-head">
+    <span class="step">07 · Suppressors</span>
+    <h2>What flattens HRV fast</h2>
+    <p class="sub">In a stress-recovery state, removing these often outperforms adding new protocols.</p>
+  </div>
+  <div class="avoid-grid">
+    <div class="avoid-card"><h4>Evening alcohol</h4><p>The single largest suppressor for most people. Even 1–2 drinks measurably blunts overnight HRV.</p></div>
+    <div class="avoid-card"><h4>Late heavy meals</h4><p>Digestion competes with parasympathetic recovery. Cut off intake 3 hours before sleep.</p></div>
+    <div class="avoid-card"><h4>Daily high-intensity training</h4><p>In burnout, HIIT and heavy lifting suppress HRV for 24–72 hrs. Use sparingly until baseline recovers.</p></div>
+    <div class="avoid-card"><h4>Inconsistent sleep timing</h4><p>Variable bed/wake times produce volatile HRV even at adequate duration. Anchor the wake time first.</p></div>
+    <div class="avoid-card"><h4>Caffeine after 2pm</h4><p>Half-life of 5–6 hours. Even if you fall asleep, it fragments deep sleep and the parasympathetic window.</p></div>
+    <div class="avoid-card"><h4>Phone in bed</h4><p>Blue light suppresses melatonin; the content keeps the SNS engaged. Both directions hurt.</p></div>
+  </div>
+</section>
+
+<!-- ============== READING DATA ============== -->
+<section class="section" id="reading">
+  <div class="section-head">
+    <span class="step">08 · Interpretation</span>
+    <h2>Reading your data correctly</h2>
+  </div>
+  <div class="rules">
+    <div class="rule"><span class="rule-num">±10%</span><p><strong>Day-to-day noise.</strong> Normal. Ignore single-day swings within this band.</p></div>
+    <div class="rule"><span class="rule-num">−20–30%</span><p><strong>Sustained 3+ days.</strong> Real recovery signal. Back off training, prioritize sleep, audit alcohol.</p></div>
+    <div class="rule"><span class="rule-num">30 days</span><p><strong>Trend window.</strong> The only meaningful chart. Single nights are weather; the 30-day line is climate.</p></div>
+    <div class="rule"><span class="rule-num">You vs you</span><p><strong>Never compare.</strong> Healthy adult HRV ranges from the 20s to 200+ ms. Your own baseline is the only reference.</p></div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="foot">
+  <div class="foot-inner">
+    <p class="foot-title">A working manual, not medical advice.</p>
+    <p class="foot-sub">Synthesized from peer-reviewed work on resonance breathing, baroreflex training, vagal tone, and cold/sleep physiology. Read the originals.</p>
+    <ul class="sources">
+      <li><a href="https://healthcarediscovery.ai/slow-breathing-vagal-tone-hrv-clinical-research-2025/" target="_blank" rel="noopener">Giorgi &amp; Tedeschi 2025 — slow breathing scoping review</a></li>
+      <li><a href="https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.570400/full" target="_blank" rel="noopener">Frontiers in Neuroscience — resonance frequency assessment</a></li>
+      <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8924557/" target="_blank" rel="noopener">PMC — Resonance breathing &amp; HRV</a></li>
+      <li><a href="https://www.ikigaihealthinstitute.com/blog/how-to-read-hrv-trends-grosicki-study" target="_blank" rel="noopener">Grosicki et al. 2026 — HRV trend interpretation</a></li>
+      <li><a href="https://www.kubios.com/blog/about-heart-rate-variability/" target="_blank" rel="noopener">Kubios — HRV metrics primer (RMSSD, SDNN)</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
